@@ -1,0 +1,17 @@
+name: "size-limit"
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Check file sizes
+        run: |
+          find . -type f -size +50k | while read file; do
+            echo "File $file exceeds the 50KB limit"
+            exit 1
+          done
