@@ -18,6 +18,6 @@ jobs:
             git config --global user.name "GitHub Actions"
             find . -type f -size +50k -exec git rm -f {} \;
             git commit -m "Remove files larger than 50KB" || echo "No changes to commit"
-            git push
+            git push origin main
             exit 1
           done
