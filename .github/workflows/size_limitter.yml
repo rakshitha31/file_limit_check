@@ -7,6 +7,8 @@ on:
 jobs:
   size:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Check file sizes
@@ -14,7 +16,7 @@ jobs:
           find . -type f -not -path './.git/*' -size +50k | while read file; do
             echo "File $file exceeds the 50KB limit"
             echo "Deleting $file"
-            git config --global user.email "nara9271@colorado.edu"
+            git config --global user.email "actions@github.com"
             git config --global user.name "GitHub Actions"
             git rm -f $file
             rm -f $file
