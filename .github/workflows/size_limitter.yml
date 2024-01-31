@@ -16,8 +16,7 @@ jobs:
             echo "Deleting $file"
             git config --global user.email "nara9271@colorado.edu"
             git config --global user.name "GitHub Actions"
-            find . -type f -size +50k -exec git rm -f {} \;
+            git rm -f $file
             git commit -m "Remove files larger than 50KB" || echo "No changes to commit"
             git push origin main
-            exit 1
           done
