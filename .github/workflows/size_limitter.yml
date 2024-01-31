@@ -13,11 +13,7 @@ jobs:
         run: |
           find . -type f -size +50k | while read file; do
             echo "File $file exceeds the 50KB limit"
-            exit 1
-          done
-      - name: Delete large files
-        run: |
-          find . -type f -size +50k | while read file; do
             echo "Deleting $file"
             rm $file
+            exit 1
           done
