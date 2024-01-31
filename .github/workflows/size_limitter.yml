@@ -8,7 +8,7 @@ jobs:
   size:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Check file sizes
         run: |
           find . -type f -not -path './.git/*' -size +50k | while read file; do
@@ -21,5 +21,5 @@ jobs:
             git add .
             git commit -m "Remove files larger than 50KB" || echo "No changes to commit"
             git remote -v
-            git push
+            git push origin main
           done
