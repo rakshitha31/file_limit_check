@@ -11,10 +11,10 @@ jobs:
       - uses: actions/checkout@v1
       - name: Check file sizes
         run: |
-          find . -type f -size +50k | while read file; do
+          find . -type f -not -path './.git/*' -size +50k | while read file; do
             echo "File $file exceeds the 50KB limit"
             echo "Deleting $file"
-            git config --global user.email "actions@github.com"
+            git config --global user.email "nara9271@colorado.edu"
             git config --global user.name "GitHub Actions"
             find . -type f -size +50k -exec git rm -f {} \;
             git commit -m "Remove files larger than 50KB" || echo "No changes to commit"
