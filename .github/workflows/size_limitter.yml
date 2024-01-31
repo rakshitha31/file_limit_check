@@ -20,5 +20,6 @@ jobs:
             rm -f $file
             git add .
             git commit -m "Remove files larger than 50KB" || echo "No changes to commit"
+            git remote -v
             git push origin main
           done
